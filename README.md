@@ -4,22 +4,25 @@
 
 ## Eclipse MicroProfile Services
 - EM (Eclipse Microprofile) is a set of specifications or technologies which fill up the gap of Java EE.
-- EM includes these technologies bellow: 
-    - Open Tracing:
+
+- EM has three layers and includes these technologies bellow: 
+- ![image](https://user-images.githubusercontent.com/66233296/151029970-d8ce03aa-25dd-4f49-98b3-4427e5dad23d.png)
+
+    - Open Tracing: allows services to easily participate in a distributed tracing environment (quite unsure what this means)
   
-    - Open API: writes interfaces and program models for developers to create API from restful endpoints
+    - Open API: provides a Java API for the OpenAPI specification that can use to expose API documentation for REST APIs. OpenAPI can be natively produced from JAX-RS apps. 
 
-    - Rest Client: provides a type safe client that handles the communication between the client and service
+    - Rest Client: provides a type safe client (as defined by JAX-RS) that handles the communication between the client and service
 
-    - Config: Allow developers to use outside sources to config the project
+    - Config: Allow developers to use outside sources to config the project. It externalizes configuration from the application to improve portability of the application
 
-    - Fault Tolerance:
+    - Fault Tolerance: provides an API and annotations for building robust behavior to cope with unexpected failures in the service you depend on
 
-    - Metrics:   
+    - Metrics: is an API uses JAX-RS that provides common REST endpoints for monitoring the telemetry data of a running microservice
 
-    - JWT Propagation: provides a way to authenticate stuff
+    - JWT Propagation: provides for interoperable authentication and role-based access control for your services.
 
-    - Health check:  provides a health endpoint allows to produce service to see if its up and running fine
+    - Health check:  provides a common REST endpoint format to determine whether a microservice is healthy or not (it's running or not)
 
     - CDI (Context and Dependency Injection): Through @Inject annotation provides objects with dependencies needed
 
@@ -29,7 +32,7 @@
 
 
 
-Good resources:
+Resources:
 - Intro to open liberty: https://www.baeldung.com/java-open-liberty 
-- MicroProfile: https://developer.ibm.com/series/what-is-microprofile/
+- MicroProfile: https://openliberty.io/docs/22.0.0.1/microprofile.html
 - MP Rest Client: https://developer.ibm.com/series/what-is-microprofile/
