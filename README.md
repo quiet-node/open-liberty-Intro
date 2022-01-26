@@ -1,4 +1,4 @@
-## open liberty
+## Open Liberty
 
 - Open Liberty is an open framework for the Java ecosystem that allows developing microservices using features of the Eclipse MicroProfile and Jakarta EE platforms.
 
