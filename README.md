@@ -26,7 +26,7 @@
 
     - CDI (Context and Dependency Injection): Through @Inject annotation provides objects with dependencies needed
 
-    - JSON-P and JSON-B: make it easy to work with JSON by providing APIs for provessing JSON
+    - JSON-P and JSON-B: make it easy to work with JSON by providing APIs for processing JSON (convert the returned object to JSON data in the HTTP response)
 
     - JAX-RS: provides Java APIs used for creating RESTful web endpoints
 
