@@ -5,6 +5,8 @@
     <featureManager>
         <feature>jakartaee-8.0</feature>
         <feature>microProfile-4.1</feature>
+        <feature>jaxrs-2.1</feature>
+
     </featureManager>
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
