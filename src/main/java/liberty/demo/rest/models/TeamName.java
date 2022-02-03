@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /*
@@ -29,7 +30,8 @@ import lombok.NoArgsConstructor;
 @NamedQuery(name = "Team_Names.findTeamNames", query="SELECT e FROM Team_Names e "
 + "WHERE e.parentNameA = :parentNameA AND " 
 + " e.yearBornA = :yearBornA e.parentNameB = :parentNameB AND e.yearBornB = :yearBornB")
-@Data // getters, setters, toString
+
+@Data // getters, setters, toString, Equals, HashCode
 @NoArgsConstructor // default constructor
 @AllArgsConstructor // constructor with all arguments
 public class TeamName implements Serializable {
@@ -51,50 +53,5 @@ public class TeamName implements Serializable {
     @Column(name = "Year_BornB")
     private String yearB;
 
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        TeamName other = (TeamName) obj;
-        if (nameA == null) {
-            if (other.nameA != null) {
-                return false;
-            }
-        } else if (!nameA.equals(other.nameA)) {
-            return false;
-        }
-        if (nameB == null) {
-            if (other.nameB != null) {
-                return false;
-            }
-        } else if (!nameB.equals(other.nameB)) {
-            return false;
-        }
-        if (yearA == null) {
-            if (other.yearA != null) {
-                return false;
-            }
-        } else if (!yearA.equals(other.yearA)) {
-            return false;
-        }
-        if (yearB == null) {
-            if (other.yearB != null) {
-                return false;
-            }
-        } else if (!yearB.equals(other.yearB)) {
-            return false;
-        }
-
-        return true;
-    }
-
-
+    
 }

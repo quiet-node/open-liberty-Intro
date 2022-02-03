@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+                        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="jpa-unit" transaction-type="JTA">
+        <jta-data-source>jdbc/eventjpadatasource</jta-data-source>
+        <properties>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="both" />
+        </properties>
+    </persistence-unit>
+</persistence>
+
+
+<!-- 
+    - The transaction-type="JTA" attribute specifies to use Java Transaction API (JTA) 
+    transaction management. Since we are using a container-managed entity manager, 
+    JTA transactions must be used.
+    - JTA transaction type requires a JTA data source to be provided. The 
+    jta-data-source element specifies the Java Naming and Directory Interface (JNDI) 
+    name of the data source that is used. The data source has already been 
+    configured for you in the server.xml file. This data source configuration is 
+    where the Java Database Connectivity (JDBC) connection is defined along with 
+    some database vendor-specific properties.
+-->
