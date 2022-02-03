@@ -26,8 +26,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "Team_Names") // Specifies details of the name of the database (table)
 
 /* @NamedQuery specifies a predefined database query that is run by an Entity Manager instace*/
-@NamedQuery(name = "Team_Names.findAll", query = "SELECT e FROM team_names e")
-@NamedQuery(name = "Team_Names.findTeamNames", query="SELECT e FROM Team_Names e "
+@NamedQuery(name = "TeamName.findAll", query = "SELECT e FROM team_names e")
+@NamedQuery(name = "TeamName.findTeamName", query="SELECT e FROM Team_Names e "
 + "WHERE e.parentNameA = :parentNameA AND " 
 + " e.yearBornA = :yearBornA e.parentNameB = :parentNameB AND e.yearBornB = :yearBornB")
 
