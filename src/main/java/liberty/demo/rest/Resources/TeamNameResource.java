@@ -9,6 +9,7 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -53,36 +54,54 @@ public class TeamNameResource {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
+    @POST
+    @Path("/urle")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Transactional
+    public Response addNewTeamName(@FormParam("nameA") String nameA,
+        @FormParam("nameB") String nameB, @FormParam("yearA") String yearA, @FormParam("yearB") String yearB ) {
+        TeamName newTeamName = new TeamName(0, nameA, nameB, yearA, yearB);
+        if(!teamNameDAO.findTeamName(nameA, nameB, yearA, yearB).isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                           .entity("TeamName already exists").build();
+        }
+        teamNameDAO.createTeamName(newTeamName);
+        return Response.status(Response.Status.NO_CONTENT).build(); 
+    }
+
     // @route:   GET api/teamnames
     // @desc:    Get all team names
     // @access   public
+    // @GET
+    // @Produces(MediaType.APPLICATION_JSON)
+    // @Transactional
+    // public JsonArray getTeamNames() {
+    //     // get JSON result
+    //     JsonObjectBuilder res = Json.createObjectBuilder(); 
+    //     JsonArrayBuilder resArray = Json.createArrayBuilder();
+
+    //     // loop through the list of teamName, then add them to the res JsonObject 
+    //     for (TeamName teamName : teamNameDAO.getAllTeamNames()) {
+    //         res
+    //         .add("nameA", teamName.getNameA())
+    //         .add("nameB", teamName.getNameB()) 
+    //         .add("yearA", teamName.getYearA()) 
+    //         .add("yearB", teamName.getYearB())
+    //         .add("id", teamName.getId());
+
+    //         resArray.add((res.build())); // push to an JSON array
+    //     }
+
+    //     return resArray.build();
+
+    // }
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public JsonArray getTeamNames() {
-        // get JSON result
-        JsonObjectBuilder res = Json.createObjectBuilder(); 
-        JsonArrayBuilder resArray = Json.createArrayBuilder();
+    public JsonObject getTeams(@RequestBody JsonObject object) {
 
-        // loop through the list of teamName, then add them to the res JsonObject 
-        for (TeamName teamName : teamNameDAO.getAllTeamNames()) {
-            res
-            .add("nameA", teamName.getNameA())
-            .add("nameB", teamName.getNameB()) 
-            .add("yearA", teamName.getYearA()) 
-            .add("yearB", teamName.getYearB())
-            .add("id", teamName.getId());
-
-            resArray.add((res.build())); // push to an JSON array
-        }
-
-        return resArray.build();
-
+        return object;
     }
-
-
-    @GET
-    public String getTeams() {
-        return "Teams Br99Mi00";
-    }
+    
 }

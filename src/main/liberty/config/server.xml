@@ -6,6 +6,9 @@
         <feature>jakartaee-8.0</feature>
         <feature>microProfile-4.1</feature>
         <feature>jaxrs-2.1</feature>
+        <feature>jsonp-1.1</feature>
+        <feature>cdi-2.0</feature>
+        <feature>jpa-2.2</feature>
 
     </featureManager>
 
@@ -23,4 +26,17 @@
 
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+
+    Derby Library Configuration
+    <library id="derbyJDBCLib">
+        <fileset dir="${shared.resource.dir}/" includes="derby*.jar" />
+    </library> 
+
+     <!-- Datasource Configuration -->
+    <dataSource id="eventjpadatasource" jndiName="jdbc/eventjpadatasource">
+        <jdbcDriver libraryRef="derbyJDBCLib" />
+        <properties.derby.embedded databaseName="EventDB" createDatabase="create" />
+    </dataSource>
+
+
 </server>
