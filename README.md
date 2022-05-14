@@ -30,8 +30,6 @@
 
     - JAX-RS: provides Java APIs used for creating RESTful web endpoints
 
-
-
 Resources:
 - Intro to open liberty: https://www.baeldung.com/java-open-liberty 
 - MicroProfile: https://openliberty.io/docs/22.0.0.1/microprofile.html
